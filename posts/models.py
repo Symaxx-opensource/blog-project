@@ -27,7 +27,7 @@ class Post(models.Model):
 
     def publish_post(self):
         self.published_post= True
-        self.published_date =   timezone.now()
+        self.published_date = timezone.now()
         self.save()
     def get_approved_comments(self):
         return self.comments.filter(approved_comment =True)
@@ -35,7 +35,7 @@ class Post(models.Model):
         return reverse('index')
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post,on_delete=models.CASCADE,related_name='comments')
+    post = models.ForeignKey(Post,on_delete=models.CASCADE, related_name='comments')
     comment = models.CharField(max_length=500)
     author_name = models.CharField(max_length=100)
     approved_comment = models.BooleanField(default=False)
